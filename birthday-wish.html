@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Greeting</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff;
+            overflow: hidden; /* Prevents scrolling */
+        }
+        .page {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            font-size: 2em;
+            color: #444;
+            padding: 20px;
+            box-sizing: border-box;
+            opacity: 0;
+            transition: opacity 1s, transform 1s;
+        }
+        .page.active {
+            display: block;
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        .page1 { background-color: #e0f7fa; }
+        .page2 { background-color: #fff3e0; }
+        .page3 { background-color: #f1f8e9; }
+        .page4 { background-color: #fce4ec; }
+
+        .decoration {
+            font-size: 1.5em;
+            color: #ff6f61;
+            font-weight: bold;
+        }
+
+        .page1 .decoration { color: #00838f; }
+        .page2 .decoration { color: #ff5722; }
+        .page3 .decoration { color: #388e3c; }
+        .page4 .decoration { color: #c2185b; }
+
+        .image-container {
+            margin-top: 20px;
+        }
+
+        .image-container img {
+            width: 200px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        /* Cake Emoji */
+        .cake {
+            font-size: 4em;
+            margin-top: 20px;
+            animation: bounce 1s infinite alternate;
+        }
+
+        /* Fireworks Emoji */
+        .fireworks {
+            font-size: 3em;
+            margin-top: 20px;
+            animation: explode 1.5s infinite ease-in-out;
+        }
+
+        /* Animations */
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes explode {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.7;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page active page1" id="page1">
+        <div>Today is <span class="decoration">15 November</span></div>
+        <div class="image-container">
+            <img src="https://via.placeholder.com/200x200.png?text=November" alt="November Decor">
+        </div>
+        <div class="cake">🎂</div>
+    </div>
+    <div class="page page2" id="page2">
+        <div>A very special day. 🤩</div>
+        <div class="image-container">
+            <img src="https://via.placeholder.com/200x200.png?text=Special+Day" alt="Special Day">
+        </div>
+        <div class="fireworks">💥💥💥</div>
+    </div>
+    <div class="page page3" id="page3">
+        <div>Today is your birthday 🎂🎉</div>
+        <div class="image-container">
+            <img src="https://via.placeholder.com/200x200.png?text=Birthday+Celebration" alt="Birthday Celebration">
+        </div>
+        <div class="cake">🎂</div>
+        <div class="fireworks">💥💥💥</div>
+    </div>
+    <div class="page page4" id="page4">
+        <div>Happy Birthday, <span class="decoration">Ankita</span> ❤️</div>
+        <div class="image-container">
+            <img src="https://via.placeholder.com/200x200.png?text=Happy+Birthday" alt="Happy Birthday">
+        </div>
+        <div class="cake">🎂</div>
+        <div class="fireworks">💥💥💥</div>
+    </div>
+
+    <script>
+        const pages = document.querySelectorAll('.page');
+        let currentPage = 0;
+
+        function showNextPage() {
+            if (currentPage < pages.length - 1) {
+                pages[currentPage].classList.remove('active');
+                currentPage++;
+                pages[currentPage].classList.add('active');
+            }
+        }
+
+        // Add event listener to handle tap/click
+        document.body.addEventListener('click', showNextPage);
+    </script>
+</body>
+</html>
